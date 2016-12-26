@@ -16,7 +16,7 @@ namespace TicaretTakipDatabaseFirst.Models
     {
         public int Id { get; set; }
         public int MusteriId { get; set; }
-        public Nullable<int> UrunId { get; set; }
+        public int UrunId { get; set; }
         public string UrunIsmi { get; set; }
         public Nullable<int> UrunAdet { get; set; }
         public Nullable<float> ToplamEtiketFiyati { get; set; }
@@ -27,7 +27,6 @@ namespace TicaretTakipDatabaseFirst.Models
         public Nullable<System.DateTime> PesinTarihi { get; set; }
         public Nullable<System.DateTime> VadeTarihi { get; set; }
         public Nullable<System.DateTime> SatisTarihi { get; set; }
-        public string MusteriIsmiSoyadi { get; set; }
     
         public virtual tbMusteri tbMusteri { get; set; }
         public virtual tbUrun tbUrun { get; set; }

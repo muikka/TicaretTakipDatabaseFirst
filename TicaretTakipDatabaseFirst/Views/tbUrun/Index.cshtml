@@ -1,0 +1,57 @@
+﻿@model IEnumerable<TicaretTakipDatabaseFirst.Models.tbUrun>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunAciklamasi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunGrubuIsmi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlisFiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SatisFiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbUrunGrubu.UrunGrubuAciklamasi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunAciklamasi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunGrubuIsmi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlisFiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SatisFiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbUrunGrubu.UrunGrubuAciklamasi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

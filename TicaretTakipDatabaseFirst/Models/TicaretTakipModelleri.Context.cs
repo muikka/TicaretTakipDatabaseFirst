@@ -13,10 +13,10 @@ namespace TicaretTakipDatabaseFirst.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TicaretTakipEntities : DbContext
+    public partial class TicaretTakipEntities1 : DbContext
     {
-        public TicaretTakipEntities()
-            : base("name=TicaretTakipEntities")
+        public TicaretTakipEntities1()
+            : base("name=TicaretTakipEntities1")
         {
         }
     
@@ -25,11 +25,12 @@ namespace TicaretTakipDatabaseFirst.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbIkamet> tbIkamet { get; set; }
         public virtual DbSet<tbMusteri> tbMusteri { get; set; }
         public virtual DbSet<tbOdemeHareketi> tbOdemeHareketi { get; set; }
-        public virtual DbSet<tbSatisHareketi> tbSatisHareketi { get; set; }
         public virtual DbSet<tbUrun> tbUrun { get; set; }
         public virtual DbSet<tbUrunGrubu> tbUrunGrubu { get; set; }
+        public virtual DbSet<tbSatisHareketi> tbSatisHareketi { get; set; }
     }
 }

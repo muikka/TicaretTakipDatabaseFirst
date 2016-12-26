@@ -172,12 +172,21 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\tbIkametController.cs" />
+    <Compile Include="Controllers\tbMusteriController.cs" />
+    <Compile Include="Controllers\tbOdemeHareketiController.cs" />
+    <Compile Include="Controllers\tbSatisHareketiController.cs" />
+    <Compile Include="Controllers\tbUrunController.cs" />
+    <Compile Include="Controllers\tbUrunGrubuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>TicaretTakipModelleri.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbIkamet.cs">
       <DependentUpon>TicaretTakipModelleri.tt</DependentUpon>
     </Compile>
@@ -286,6 +295,36 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\tbUrunGrubu\Create.cshtml" />
+    <Content Include="Views\tbUrunGrubu\Delete.cshtml" />
+    <Content Include="Views\tbUrunGrubu\Details.cshtml" />
+    <Content Include="Views\tbUrunGrubu\Edit.cshtml" />
+    <Content Include="Views\tbUrunGrubu\Index.cshtml" />
+    <Content Include="Views\tbUrun\Create.cshtml" />
+    <Content Include="Views\tbUrun\Delete.cshtml" />
+    <Content Include="Views\tbUrun\Details.cshtml" />
+    <Content Include="Views\tbUrun\Edit.cshtml" />
+    <Content Include="Views\tbUrun\Index.cshtml" />
+    <Content Include="Views\tbSatisHareketi\Create.cshtml" />
+    <Content Include="Views\tbSatisHareketi\Delete.cshtml" />
+    <Content Include="Views\tbSatisHareketi\Details.cshtml" />
+    <Content Include="Views\tbSatisHareketi\Edit.cshtml" />
+    <Content Include="Views\tbSatisHareketi\Index.cshtml" />
+    <Content Include="Views\tbOdemeHareketi\Create.cshtml" />
+    <Content Include="Views\tbOdemeHareketi\Delete.cshtml" />
+    <Content Include="Views\tbOdemeHareketi\Details.cshtml" />
+    <Content Include="Views\tbOdemeHareketi\Edit.cshtml" />
+    <Content Include="Views\tbOdemeHareketi\Index.cshtml" />
+    <Content Include="Views\tbMusteri\Create.cshtml" />
+    <Content Include="Views\tbMusteri\Delete.cshtml" />
+    <Content Include="Views\tbMusteri\Details.cshtml" />
+    <Content Include="Views\tbMusteri\Edit.cshtml" />
+    <Content Include="Views\tbMusteri\Index.cshtml" />
+    <Content Include="Views\tbIkamet\Create.cshtml" />
+    <Content Include="Views\tbIkamet\Delete.cshtml" />
+    <Content Include="Views\tbIkamet\Details.cshtml" />
+    <Content Include="Views\tbIkamet\Edit.cshtml" />
+    <Content Include="Views\tbIkamet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

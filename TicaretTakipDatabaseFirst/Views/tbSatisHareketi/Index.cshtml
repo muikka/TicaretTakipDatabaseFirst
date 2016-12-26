@@ -1,0 +1,99 @@
+﻿@model IEnumerable<TicaretTakipDatabaseFirst.Models.tbSatisHareketi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunIsmi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunAdet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToplamEtiketFiyati)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SatisBedeli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YuzdeIskonto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PesinMi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VadeliMi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PesinTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VadeTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SatisTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbMusteri.TcKimlikNumara)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbUrun.UrunAciklamasi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunIsmi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunAdet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToplamEtiketFiyati)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SatisBedeli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YuzdeIskonto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PesinMi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VadeliMi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PesinTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VadeTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SatisTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbMusteri.TcKimlikNumara)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbUrun.UrunAciklamasi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,114 @@
+﻿@model TicaretTakipDatabaseFirst.Models.tbSatisHareketi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbSatisHareketi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunIsmi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunIsmi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAdet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToplamEtiketFiyati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToplamEtiketFiyati)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SatisBedeli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SatisBedeli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YuzdeIskonto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YuzdeIskonto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PesinMi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PesinMi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VadeliMi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VadeliMi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PesinTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PesinTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VadeTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VadeTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SatisTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SatisTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbMusteri.TcKimlikNumara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbMusteri.TcKimlikNumara)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbUrun.UrunAciklamasi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbUrun.UrunAciklamasi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

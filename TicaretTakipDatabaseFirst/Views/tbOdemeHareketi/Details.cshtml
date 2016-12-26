@@ -1,0 +1,50 @@
+﻿@model TicaretTakipDatabaseFirst.Models.tbOdemeHareketi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tbOdemeHareketi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MusteriIsmiSoyIsmi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MusteriIsmiSoyIsmi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OdenenTutar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OdenenTutar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbMusteri.TcKimlikNumara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbMusteri.TcKimlikNumara)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

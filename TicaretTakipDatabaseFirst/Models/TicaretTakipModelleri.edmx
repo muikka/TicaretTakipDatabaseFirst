@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TicaretTakipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbIkamet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YerIsmi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbMusteri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TcKimlikNumara" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Isim" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoyAd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IkametId" Type="int" Nullable="false" />
+          <Property Name="TamAdres" Type="varchar" MaxLength="255" />
+          <Property Name="TelefonNumarasi" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IkinciTelefonNumarasi" Type="varchar" MaxLength="20" />
+          <Property Name="MusteriAciklamasi" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbOdemeHareketi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriId" Type="int" Nullable="false" />
+          <Property Name="MusteriIsmiSoyIsmi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="OdenenTutar" Type="real" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbSatisHareketi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusteriId" Type="int" Nullable="false" />
+          <Property Name="MusteriIsmiSoyadi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UrunId" Type="int" />
+          <Property Name="UrunIsmi" Type="varchar" MaxLength="50" />
+          <Property Name="UrunAdet" Type="int" />
+          <Property Name="ToplamEtiketFiyati" Type="real" />
+          <Property Name="SatisBedeli" Type="real" />
+          <Property Name="YuzdeIskonto" Type="real" />
+          <Property Name="PesinMi" Type="bit" />
+          <Property Name="VadeliMi" Type="bit" />
+          <Property Name="PesinTarihi" Type="datetime" />
+          <Property Name="VadeTarihi" Type="datetime" />
+          <Property Name="SatisTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbUrun">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunAciklamasi" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="UrunGrubuId" Type="int" />
+          <Property Name="UrunGrubuIsmi" Type="varchar" MaxLength="50" />
+          <Property Name="AlisFiyat" Type="real" />
+          <Property Name="SatisFiyat" Type="real" />
+        </EntityType>
+        <EntityType Name="tbUrunGrubu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunGrubuAciklamasi" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__tbMusteri__Ikame__1367E606">
+          <End Role="tbIkamet" Type="Self.tbIkamet" Multiplicity="1" />
+          <End Role="tbMusteri" Type="Self.tbMusteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbIkamet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbMusteri">
+              <PropertyRef Name="IkametId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbOdemeHa__Muste__1ED998B2">
+          <End Role="tbMusteri" Type="Self.tbMusteri" Multiplicity="1" />
+          <End Role="tbOdemeHareketi" Type="Self.tbOdemeHareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMusteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbOdemeHareketi">
+              <PropertyRef Name="MusteriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbSatisHa__Muste__21B6055D">
+          <End Role="tbMusteri" Type="Self.tbMusteri" Multiplicity="1" />
+          <End Role="tbSatisHareketi" Type="Self.tbSatisHareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMusteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbSatisHareketi">
+              <PropertyRef Name="MusteriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbSatisHa__UrunI__22AA2996">
+          <End Role="tbUrun" Type="Self.tbUrun" Multiplicity="0..1" />
+          <End Role="tbSatisHareketi" Type="Self.tbSatisHareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUrun">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbSatisHareketi">
+              <PropertyRef Name="UrunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbUrun__UrunGrub__1A14E395">
+          <End Role="tbUrunGrubu" Type="Self.tbUrunGrubu" Multiplicity="0..1" />
+          <End Role="tbUrun" Type="Self.tbUrun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUrunGrubu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbUrun">
+              <PropertyRef Name="UrunGrubuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TicaretTakipModelStoreContainer">
+          <EntitySet Name="tbIkamet" EntityType="Self.tbIkamet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMusteri" EntityType="Self.tbMusteri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbOdemeHareketi" EntityType="Self.tbOdemeHareketi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbSatisHareketi" EntityType="Self.tbSatisHareketi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbUrun" EntityType="Self.tbUrun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbUrunGrubu" EntityType="Self.tbUrunGrubu" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbMusteri__Ikame__1367E606" Association="Self.FK__tbMusteri__Ikame__1367E606">
+            <End Role="tbIkamet" EntitySet="tbIkamet" />
+            <End Role="tbMusteri" EntitySet="tbMusteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbOdemeHa__Muste__1ED998B2" Association="Self.FK__tbOdemeHa__Muste__1ED998B2">
+            <End Role="tbMusteri" EntitySet="tbMusteri" />
+            <End Role="tbOdemeHareketi" EntitySet="tbOdemeHareketi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSatisHa__Muste__21B6055D" Association="Self.FK__tbSatisHa__Muste__21B6055D">
+            <End Role="tbMusteri" EntitySet="tbMusteri" />
+            <End Role="tbSatisHareketi" EntitySet="tbSatisHareketi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSatisHa__UrunI__22AA2996" Association="Self.FK__tbSatisHa__UrunI__22AA2996">
+            <End Role="tbUrun" EntitySet="tbUrun" />
+            <End Role="tbSatisHareketi" EntitySet="tbSatisHareketi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbUrun__UrunGrub__1A14E395" Association="Self.FK__tbUrun__UrunGrub__1A14E395">
+            <End Role="tbUrunGrubu" EntitySet="tbUrunGrubu" />
+            <End Role="tbUrun" EntitySet="tbUrun" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TicaretTakipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbIkamet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YerIsmi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbMusteri" Relationship="Self.FK__tbMusteri__Ikame__1367E606" FromRole="tbIkamet" ToRole="tbMusteri" />
+        </EntityType>
+        <EntityType Name="tbMusteri">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TcKimlikNumara" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Isim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SoyAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IkametId" Type="Int32" Nullable="false" />
+          <Property Name="TamAdres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonNumarasi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IkinciTelefonNumarasi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MusteriAciklamasi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbIkamet" Relationship="Self.FK__tbMusteri__Ikame__1367E606" FromRole="tbMusteri" ToRole="tbIkamet" />
+          <NavigationProperty Name="tbOdemeHareketi" Relationship="Self.FK__tbOdemeHa__Muste__1ED998B2" FromRole="tbMusteri" ToRole="tbOdemeHareketi" />
+          <NavigationProperty Name="tbSatisHareketi" Relationship="TicaretTakipModel.FK__tbSatisHa__Muste__21B6055D" FromRole="tbMusteri" ToRole="tbSatisHareketi" />
+        </EntityType>
+        <EntityType Name="tbOdemeHareketi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriId" Type="Int32" Nullable="false" />
+          <Property Name="MusteriIsmiSoyIsmi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OdenenTutar" Type="Single" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbMusteri" Relationship="Self.FK__tbOdemeHa__Muste__1ED998B2" FromRole="tbOdemeHareketi" ToRole="tbMusteri" />
+        </EntityType>
+        <EntityType Name="tbSatisHareketi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusteriId" Type="Int32" Nullable="false" />
+          <Property Name="UrunId" Type="Int32" />
+          <Property Name="UrunIsmi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UrunAdet" Type="Int32" />
+          <Property Name="ToplamEtiketFiyati" Type="Single" />
+          <Property Name="SatisBedeli" Type="Single" />
+          <Property Name="YuzdeIskonto" Type="Single" />
+          <Property Name="PesinMi" Type="Boolean" />
+          <Property Name="VadeliMi" Type="Boolean" />
+          <Property Name="PesinTarihi" Type="DateTime" Precision="3" />
+          <Property Name="VadeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="SatisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="MusteriIsmiSoyadi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbMusteri" Relationship="TicaretTakipModel.FK__tbSatisHa__Muste__21B6055D" FromRole="tbSatisHareketi" ToRole="tbMusteri" />
+          <NavigationProperty Name="tbUrun" Relationship="TicaretTakipModel.FK__tbSatisHa__UrunI__22AA2996" FromRole="tbSatisHareketi" ToRole="tbUrun" />
+        </EntityType>
+        <EntityType Name="tbUrun">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunAciklamasi" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UrunGrubuId" Type="Int32" />
+          <Property Name="UrunGrubuIsmi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AlisFiyat" Type="Single" />
+          <Property Name="SatisFiyat" Type="Single" />
+          <NavigationProperty Name="tbUrunGrubu" Relationship="Self.FK__tbUrun__UrunGrub__1A14E395" FromRole="tbUrun" ToRole="tbUrunGrubu" />
+          <NavigationProperty Name="tbSatisHareketi" Relationship="TicaretTakipModel.FK__tbSatisHa__UrunI__22AA2996" FromRole="tbUrun" ToRole="tbSatisHareketi" />
+        </EntityType>
+        <EntityType Name="tbUrunGrubu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunGrubuAciklamasi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tbUrun" Relationship="Self.FK__tbUrun__UrunGrub__1A14E395" FromRole="tbUrunGrubu" ToRole="tbUrun" />
+        </EntityType>
+        <Association Name="FK__tbMusteri__Ikame__1367E606">
+          <End Role="tbIkamet" Type="Self.tbIkamet" Multiplicity="1" />
+          <End Role="tbMusteri" Type="Self.tbMusteri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbIkamet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbMusteri">
+              <PropertyRef Name="IkametId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbOdemeHa__Muste__1ED998B2">
+          <End Role="tbMusteri" Type="Self.tbMusteri" Multiplicity="1" />
+          <End Role="tbOdemeHareketi" Type="Self.tbOdemeHareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMusteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbOdemeHareketi">
+              <PropertyRef Name="MusteriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbUrun__UrunGrub__1A14E395">
+          <End Role="tbUrunGrubu" Type="Self.tbUrunGrubu" Multiplicity="0..1" />
+          <End Role="tbUrun" Type="Self.tbUrun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUrunGrubu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbUrun">
+              <PropertyRef Name="UrunGrubuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TicaretTakipEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbIkamet" EntityType="Self.tbIkamet" />
+          <EntitySet Name="tbMusteri" EntityType="Self.tbMusteri" />
+          <EntitySet Name="tbOdemeHareketi" EntityType="Self.tbOdemeHareketi" />
+          <EntitySet Name="tbSatisHareketi" EntityType="Self.tbSatisHareketi" />
+          <EntitySet Name="tbUrun" EntityType="Self.tbUrun" />
+          <EntitySet Name="tbUrunGrubu" EntityType="Self.tbUrunGrubu" />
+          <AssociationSet Name="FK__tbMusteri__Ikame__1367E606" Association="Self.FK__tbMusteri__Ikame__1367E606">
+            <End Role="tbIkamet" EntitySet="tbIkamet" />
+            <End Role="tbMusteri" EntitySet="tbMusteri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbOdemeHa__Muste__1ED998B2" Association="Self.FK__tbOdemeHa__Muste__1ED998B2">
+            <End Role="tbMusteri" EntitySet="tbMusteri" />
+            <End Role="tbOdemeHareketi" EntitySet="tbOdemeHareketi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbUrun__UrunGrub__1A14E395" Association="Self.FK__tbUrun__UrunGrub__1A14E395">
+            <End Role="tbUrunGrubu" EntitySet="tbUrunGrubu" />
+            <End Role="tbUrun" EntitySet="tbUrun" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSatisHa__Muste__21B6055D" Association="TicaretTakipModel.FK__tbSatisHa__Muste__21B6055D">
+            <End Role="tbMusteri" EntitySet="tbMusteri" />
+            <End Role="tbSatisHareketi" EntitySet="tbSatisHareketi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbSatisHa__UrunI__22AA2996" Association="TicaretTakipModel.FK__tbSatisHa__UrunI__22AA2996">
+            <End Role="tbUrun" EntitySet="tbUrun" />
+            <End Role="tbSatisHareketi" EntitySet="tbSatisHareketi" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK__tbSatisHa__Muste__21B6055D">
+          <End Type="TicaretTakipModel.tbMusteri" Role="tbMusteri" Multiplicity="1" />
+          <End Type="TicaretTakipModel.tbSatisHareketi" Role="tbSatisHareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMusteri">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbSatisHareketi">
+              <PropertyRef Name="MusteriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbSatisHa__UrunI__22AA2996">
+          <End Type="TicaretTakipModel.tbUrun" Role="tbUrun" Multiplicity="0..1" />
+          <End Type="TicaretTakipModel.tbSatisHareketi" Role="tbSatisHareketi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbUrun">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbSatisHareketi">
+              <PropertyRef Name="UrunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TicaretTakipModelStoreContainer" CdmEntityContainer="TicaretTakipEntities">
+          <EntitySetMapping Name="tbIkamet">
+            <EntityTypeMapping TypeName="TicaretTakipModel.tbIkamet">
+              <MappingFragment StoreEntitySet="tbIkamet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="YerIsmi" ColumnName="YerIsmi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMusteri">
+            <EntityTypeMapping TypeName="TicaretTakipModel.tbMusteri">
+              <MappingFragment StoreEntitySet="tbMusteri">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TcKimlikNumara" ColumnName="TcKimlikNumara" />
+                <ScalarProperty Name="Isim" ColumnName="Isim" />
+                <ScalarProperty Name="SoyAd" ColumnName="SoyAd" />
+                <ScalarProperty Name="IkametId" ColumnName="IkametId" />
+                <ScalarProperty Name="TamAdres" ColumnName="TamAdres" />
+                <ScalarProperty Name="TelefonNumarasi" ColumnName="TelefonNumarasi" />
+                <ScalarProperty Name="IkinciTelefonNumarasi" ColumnName="IkinciTelefonNumarasi" />
+                <ScalarProperty Name="MusteriAciklamasi" ColumnName="MusteriAciklamasi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbOdemeHareketi">
+            <EntityTypeMapping TypeName="TicaretTakipModel.tbOdemeHareketi">
+              <MappingFragment StoreEntitySet="tbOdemeHareketi">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+                <ScalarProperty Name="MusteriIsmiSoyIsmi" ColumnName="MusteriIsmiSoyIsmi" />
+                <ScalarProperty Name="OdenenTutar" ColumnName="OdenenTutar" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbSatisHareketi">
+            <EntityTypeMapping TypeName="TicaretTakipModel.tbSatisHareketi">
+              <MappingFragment StoreEntitySet="tbSatisHareketi">
+                <ScalarProperty Name="MusteriIsmiSoyadi" ColumnName="MusteriIsmiSoyadi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MusteriId" ColumnName="MusteriId" />
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="UrunIsmi" ColumnName="UrunIsmi" />
+                <ScalarProperty Name="UrunAdet" ColumnName="UrunAdet" />
+                <ScalarProperty Name="ToplamEtiketFiyati" ColumnName="ToplamEtiketFiyati" />
+                <ScalarProperty Name="SatisBedeli" ColumnName="SatisBedeli" />
+                <ScalarProperty Name="YuzdeIskonto" ColumnName="YuzdeIskonto" />
+                <ScalarProperty Name="PesinMi" ColumnName="PesinMi" />
+                <ScalarProperty Name="VadeliMi" ColumnName="VadeliMi" />
+                <ScalarProperty Name="PesinTarihi" ColumnName="PesinTarihi" />
+                <ScalarProperty Name="VadeTarihi" ColumnName="VadeTarihi" />
+                <ScalarProperty Name="SatisTarihi" ColumnName="SatisTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUrun">
+            <EntityTypeMapping TypeName="TicaretTakipModel.tbUrun">
+              <MappingFragment StoreEntitySet="tbUrun">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UrunAciklamasi" ColumnName="UrunAciklamasi" />
+                <ScalarProperty Name="UrunGrubuId" ColumnName="UrunGrubuId" />
+                <ScalarProperty Name="UrunGrubuIsmi" ColumnName="UrunGrubuIsmi" />
+                <ScalarProperty Name="AlisFiyat" ColumnName="AlisFiyat" />
+                <ScalarProperty Name="SatisFiyat" ColumnName="SatisFiyat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbUrunGrubu">
+            <EntityTypeMapping TypeName="TicaretTakipModel.tbUrunGrubu">
+              <MappingFragment StoreEntitySet="tbUrunGrubu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UrunGrubuAciklamasi" ColumnName="UrunGrubuAciklamasi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

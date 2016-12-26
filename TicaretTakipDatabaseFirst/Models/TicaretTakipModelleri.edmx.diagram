@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f12ee542534f4a50ae20e840fe14d47c" Name="Diagram1">
+        <EntityTypeShape EntityType="TicaretTakipModel.tbIkamet" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicaretTakipModel.tbMusteri" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicaretTakipModel.tbOdemeHareketi" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicaretTakipModel.tbSatisHareketi" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicaretTakipModel.tbUrun" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicaretTakipModel.tbUrunGrubu" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="TicaretTakipModel.FK__tbMusteri__Ikame__1367E606" ManuallyRouted="false" />
+        <AssociationConnector Association="TicaretTakipModel.FK__tbOdemeHa__Muste__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="TicaretTakipModel.FK__tbUrun__UrunGrub__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="TicaretTakipModel.FK__tbSatisHa__Muste__21B6055D" />
+        <AssociationConnector Association="TicaretTakipModel.FK__tbSatisHa__UrunI__22AA2996" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
